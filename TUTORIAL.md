@@ -36,7 +36,7 @@ end
 
 ```
 
-###Bcrpt
+###Bcrypt
 Now we are going to add the `bcrypt` gem to our gemfile. `Bcrypt` is going to give us access to a method called `has_secure_password` which adds methods to set and authenticate against BCrypt passwords. We don't need to create validations for password presence, because it's included within this method.
 
 `bundle install` to update your gemfile
