@@ -15,7 +15,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to user_path(@user), :notice => "Thank you for signing up!"
+      # redirect_to user_path(@user), :notice => "Thank you for signing up!"
+      session[:user_id] = @user.id
+      redirect_to root_path, notice: "Thank you for signing up, #{@user.name}!"
     else
       render :new
     end
@@ -27,6 +29,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:name)
+      params.require(:user).permit(:name, :password, :password_confirmation, :email)
     end
 end
