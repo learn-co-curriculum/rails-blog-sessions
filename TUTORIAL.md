@@ -152,7 +152,7 @@ Step by step, we'll fix this by:
 1. Now that we have sessions, make sure that when a new user signs up their session is stored as well. You can handle this by setting the session id with the user id when creating a new user.
  - In `user#create` set `session[:user_id] = @user.id`
 
-	 ```
+	 ```ruby
 	   def create
 	    @user = User.new(user_params)
 	    if @user.save
@@ -198,11 +198,11 @@ In the application controller, make a private `helper_method` called `current_us
 	    !user_signed_in?
 	  end
   ```
- - `before_action :authorize` in comments controller
- - `before_action :authorize, except: [:show]` in posts controller
+ - `before_action :authorize` in Comments controller
+ - `before_action :authorize, except: [:show]` in Posts controller
 
 5. This will help us in our header to render info about the logged in user and create some view logic to only render a logout link and new post link if the user is logged in. Have the current user's name displayed too to let them know they're logged in.
- - Add `<% if user_signed_in? %>` to `_header`
+ - Add `<% if user_signed_in? %>` to `_header.html.erb`
 
  ```ruby
  	<nav>
