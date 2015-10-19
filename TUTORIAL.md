@@ -202,7 +202,7 @@ In the application controller, make a private `helper_method` called `current_us
  - `before_action :authorize, except: [:show]` in Posts controller
 
 5. This will help us in our header to render info about the logged in user and create some view logic to only render a logout link and new post link if the user is logged in. Have the current user's name displayed too to let them know they're logged in.
- - Add `<% if user_signed_in? %>` to `_header.html.erb`
+ - Add `<% if current_user %>` to `_header.html.erb` and `<li><a href="/users/<%=current_user.id%>"><%= "Hello, #{current_user.name}!" %></a></li>`
 
  ```ruby
  	<nav>
@@ -221,6 +221,32 @@ In the application controller, make a private `helper_method` called `current_us
  ```
 
 6. Refactor our forms that handle new comments to check if the user is signed in.
- - `<% if user_signed_in? %>`
+ - Wrap the "Comments" section with a `<% if user_signed_in? %>` conditional
+
+ ```ruby
+ 	<% if user_signed_in? %>
+	  <h3>Comments:</h3>
+	    <% @post.comments.each do |comment| %>
+	      <p><%= comment.content %> </p>
+	      <p><%= binding.pry %> </p>
+	      <p><%= comment.user.name %> </p>
+	    <% end %>
+	
+	    <h4>Post a new comment:</h4>
+	    <%= form_for [@post, Comment.new] do |f| %>
+	      <div class="field">
+	        <%= f.label :content %><br>
+	        <%= f.text_area :content %><br>
+	        <%= f.hidden_field :post_id, :value => @post.id %>
+	      </div>
+	
+	      <div class="actions">
+	        <%= f.submit %>
+	      </div>
+	    <% end %>
+	<% else %>
+	  "Log In to Comment!"
+	<% end %>
+ ```
 
 
