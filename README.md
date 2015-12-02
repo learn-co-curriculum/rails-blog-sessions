@@ -56,3 +56,5 @@ Now that we have sessions, we can create conditionals on various actions in our 
 
 [before_action](http://guides.rubyonrails.org/action_controller_overview.html#filters)
 
+
+<a href='https://learn.co/lessons/rails-blog-sessions' data-visibility='hidden'>View this lesson on Learn.co</a>
