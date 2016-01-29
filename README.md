@@ -57,4 +57,4 @@ Now that we have sessions, we can create conditionals on various actions in our 
 [before_action](http://guides.rubyonrails.org/action_controller_overview.html#filters)
 
 
-<a href='https://learn.co/lessons/rails-blog-sessions' data-visibility='hidden'>View this lesson on Learn.co</a>
+<p data-visibility='hidden'>View <a href='https://learn.co/lessons/rails-blog-sessions' title='Rails Blog: Authentication from Scratch using Sessions'>Rails Blog: Authentication from Scratch using Sessions</a> on Learn.co and start learning to code for free.</p>
