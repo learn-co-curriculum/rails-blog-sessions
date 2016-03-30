@@ -4,6 +4,7 @@ describe 'user signup', :type => :feature do
   include LoginHelper
 
   it 'successfully signs up' do
+    puts page.body
     signup_valid
   end
 
@@ -66,6 +67,7 @@ describe 'user authorization before certain actions' do
     visit '/'
     click_link('post title')
     expect(current_path).to eq("/posts/#{@post.id}")
+    puts page.body
     expect(page).to have_content('Log In to Comment!')
     expect(page).to have_no_content('Post a new comment:')
   end

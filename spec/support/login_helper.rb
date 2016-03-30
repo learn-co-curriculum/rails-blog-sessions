@@ -5,6 +5,7 @@ module LoginHelper
     expect(current_path).to eq('/login')
     fill_in(:email, :with => @crookshanks.email)
     fill_in(:password, :with => @crookshanks.password)
+    puts page.body
     click_button('Log In')
     expect(current_path).to eq('/')
     expect(page).to have_content("Hello, #{@crookshanks.name}!")
